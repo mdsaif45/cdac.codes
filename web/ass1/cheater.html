@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Title Of the Document -->
+    <title>Decomposition Powers Three</title>
+    <meta name="description" content="Decomposition Powers Three">
+</head>
+<style>
+    
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        color: rgb(21, 70, 53);
+        background-color: aquamarine;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    #main  {
+        /* margin: 150px auto; */
+        margin-top: 130px;
+        width: 400px;
+        height: 600px;
+        background-color: antiquewhite;
+        border: 1px solid rgb(21, 70, 53);
+        border-radius: 5px;
+    }
+    #title{
+        text-align: center;
+        padding: 15px;
+    }
+    #input{
+        
+        width: 300px;
+        margin: 10px auto;
+        font-size: 20px;
+        font-family: monospace;
+    }
+    input{
+        
+        margin-top: 10px;
+        padding-left: 10px;
+        height: 30px;
+        border: 1px solid rgb(21, 70, 53);
+        border-radius: 5px;
+        border-bottom: 2px solid rgb(21, 70, 53);
+        border-right: 2px solid rgb(21, 70, 53);
+    }
+    h2{
+        font-family: monospace;
+        /* text-align: center; */
+        margin-top: 35px;
+    }
+    .button{
+        width: 91%;
+        height: 40px;
+        font-size: 18px;
+        font-family: monospace;
+        font-weight: bold;
+        margin: 20px auto;
+        margin-top: 30px;
+        background-color: aquamarine;
+        box-shadow: 5px 5px 0px 0px;
+    }
+    .button:hover{
+        background-color: rgb(46, 211, 156);    
+    }
+    #result{
+        /* margin: 150px auto; */
+        font-family: monospace;
+        width: 400px;
+        height: 600px;
+        margin-top: 130px;
+        margin-left: 20px;
+        padding-left: 20px;
+        text-align: left;
+        background-color: antiquewhite;
+        border: 1px solid rgb(21, 70, 53);
+        border-radius: 5px; 
+        display: none;
+    }
+</style>
+
+<body>
+    <!-- Structure Of UI -->
+    <div id="main">
+        <h1 id="title">Decomposition Powers Three</h1>
+        <div id="input" style="margin-top: 80px;">
+            <!-- <label for="inputNumber">Enter an Integer between 121 and -121</label> -->
+            <p>Enter an Integer between 121 and -121</p>
+            <input type="text" id="inputNumber" style="width: 50px;"></input>
+            
+            <!-- Click for Output Button calls powersOfThree Function -->
+            <button class="button" onclick=powersOfThree() >Abra-Katabra</button>
+            
+        </div>
+    </div>
+    <div id="result">
+        <h1>Solution</h1>
+        <hr>
+        <div  id="outputstyle" >
+                <h3 id="output" >
+                </h3>
+            </div>
+    </div>
+
+    <script>
+        // function which holds the main logic
+        function powersOfThree() {
+            //Read the input number from the text box
+            let numericInput = document.getElementById('inputNumber').value;
+            //initialization of variables
+            let bucketSum = 0;
+            let bucketValue = 0;
+            let finalStringValue = '';
+            let diffValue = numericInput;
+            let i = 1;
+            //while loop will run till bucketsum equals the given input integer
+            while (bucketSum != numericInput) {
+                //bucketValue will hold the interval's power of three value
+                //bucketFinder is the function which will take an integer an as argument and will return the respective integer's power of three value.
+                //If 39 is the given number then bucket finder will return 27 as 39 belongs to [14,40]interval which is basically 3 to the power 3(27).
+                bucketValue = bucketFinder(diffValue);
+                //we will get an error when the input integer is not in the range -121 and 121
+                if (bucketValue == 'error') {
+                    //popup gets displayed in error scenario
+                    alert("Please enter a valid integer")
+                    break;
+                } else {
+                    //finalStringValue will have the decomposed powers of three aligned as a string
+                    i > 1 && bucketValue > 0 ? finalStringValue = finalStringValue + '+' + bucketValue + '' : finalStringValue = finalStringValue + bucketValue + '';
+                    // bucket sum will have the sum of the interval values
+                    bucketSum = bucketSum + bucketValue;
+                    //diffValue will have the difference of given input integer and bucket sum
+                    diffValue = numericInput - bucketSum;
+                    i++;
+                }
+            }
+            if (bucketValue != 'error') {
+                //output in the console
+                console.log("OUTPUT", finalStringValue);
+                document.getElementById('outputstyle').style.display = "block";
+                //display output on UI
+                document.getElementById("result").style.display = "block";
+                document.getElementById('output').innerHTML = numericInput+" = "+finalStringValue;
+            }
+        }
+
+        function bucketFinder(x) {
+            if (x > 0) {
+                //positive intervals or positive powers of 3
+                // interval [1,1]
+                if (x == 1) {
+                    return 1;
+                    // interval [2,4]
+                } else if (x >= 2 && x <= 4) {
+                    return 3;
+                    // interval [5,13]
+                } else if (x >= 5 && x <= 13) {
+                    return 9;
+                    // interval [40,40]
+                } else if (x >= 14 && x <= 40) {
+                    return 27;
+                    // interval [41,121]
+                } else if (x >= 41 && x <= 121) {
+                    return 81;
+                } else {
+                    return 'error';
+                }
+            } else {
+                //positive intervals or positive powers of 3
+                // interval [-1,-1]
+                if (x == -1) {
+                    return -1;
+                    // interval [-4,-2]
+                } else if (x >= -4 && x <= -2) {
+                    return -3;
+                    // interval [-13,-5]
+                } else if (x >= -13 && x <= -5) {
+                    return -9;
+                    // interval [-40,-14]
+                } else if (x >= -40 && x <= -14) {
+                    return -27;
+                    // interval [-41,-121]
+                } else if (x >= -121 && x <= -41) {
+                    return -81;
+                } else {
+                    return 'error';
+                }
+            }
+        }
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,15 @@
+<script>
+    async function f1() {
+      setTimeout(function () {
+        console.log("f1 function");
+        console.log("f1 content...");        
+    }, 400);
+    }
+    function f2() {
+        console.log("f2 function");
+        f1();
+        console.log("f2 content...");
+    }
+    
+    f2();
+</script>

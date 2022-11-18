@@ -1,0 +1,79 @@
+Assignment 1
+--------------------------------------------
+1. Create a Loan calculator app that takes inputs from the user and displays the interest amount, the principal amount and other details. 
+2. Create a Temperature conversion Program that takes inputs of a certain unit of temperature and convert it into other unit.Cel vs. Farenheit. 
+
+{
+The temperature conversion formulae are as follows:
+
+To convert 
+Celsius to Kelvin, 
+multiply C by 273.15.
+C = K – 273.15 Kelvin to Celcius
+C = (F-32) (5/9) Fahrenheit to Celcius
+Fahrenheit to Celsius: F = C (9/5) + 32
+K = (F-32) (5/9) + 273.15 K = (F-32) (5/9) K = (F-32) (5/9) K = (F-32) (5/9) K = (F-32) (5
+F = (K-273.15) (9/5) + 32 Kelvin to Fahrenheit
+}
+
+3. Create a Shoping basket app that takes inputs from the user on the items he/she will purchase and display them in the form an ordered List inside a div element. 
+
+4. Create a Data Entry Page that takes inputs of the Customer like his name, address, telephone and it should display the details into a table as a single roww. All customers info will be added as seperate rows. Each row will contain one customer information. 
+
+-----------------------------------------
+Assignment 2
+--------------------------------------------------------------------------------
+1.Create a HTML form for building your resume.
+2.Apply inline, internal, and external CSS to change colors of certain text portions, bold, 
+underline, and italics certain words in the previously created HTML resume form.
+
+
+----------------------------------------
+Assignment 3
+----------------------------------------------------------------------------------
+
+1)Write a JavaScript program to print day of a week using switch statement.
+
+2) Write a JavaScript program to print number from 1 to 100 with incremental
+value of 2 using while loop and for loop
+
+3) Write a JavaScript program to create an array with 5 elements and make a copy
+of the original array with elements from 2nd index to 4th index;
+
+4) Write a JavaScript program to create an asynchronous function using Promise
+object;
+
+5) Write a JavaScript program to create an asynchronous function using
+setInterval method;
+
+6) Write a JavaScript program to create an object using Object.create method.
+
+7) Write a JavaScript program to create an object and add a property using
+either accessor descriptor or data descriptor.
+
+8) Write a JavaScript program to demonstrate immediately invokable function.
+
+9)Write a JavaScript program to sort a list of elements by implementing a sorting algorithm.
+
+10)Write a JavaScript program to list the properties of a JavaScript object
+
+
+#
+Assignment 4
+
+1.Write a JavaScript function to get First and Last name from the previously created Resume 
+form
+2. Validate the entire Resume form using client-side JavaScript.
+3.Write a jQuery program to get a single element from a selection of elements of a HTML page.
+4. You are having sample data for the link. Write jQuery code to change the hyperlink and the 
+text of an existing link.
+5. Write a jQuery program to attach a click and double-click events to all <p> elements. 
+6.Write a jQuery program to hide all headings on a page when they are clicked.
+o Also find the position of the mouse pointer relative to the left and top edges of the document
+
+Assignment 5
+
+1.Create a page showing live score/feed using Ajax and JSON from a live sport/news service end point given by the faculty.
+2. Write a JavaScript program to create a closure function.
+3. Write a JavaScript program to list the properties of a JavaScript object.
+

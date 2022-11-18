@@ -1,0 +1,17 @@
+<script>
+    const obj = {
+        id : 12,
+        emp_name : "Bob",
+        salary : 34000,
+        address : "",
+        set add(address){
+            this.address = address;
+        },
+        get add(){
+            return this.address;
+        }
+    }
+
+    obj.add = "Delhi"
+    console.log(obj.add);
+</script>

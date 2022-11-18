@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        color: rgb(21, 70, 53);
+        background-color: aquamarine;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    #main  {
+        /* margin: 150px auto; */
+        margin-top: 130px;
+        width: 400px;
+        height: 600px;
+        background-color: antiquewhite;
+        border: 1px solid rgb(69, 214, 166);
+        border-radius: 5px;
+    }
+    #title{
+        text-align: center;
+        padding: 15px;
+    }
+    #input{
+        width: 200px;
+        margin: 10px auto;
+        font-size: 20px;
+        font-family: monospace;
+    }
+    input{
+        height: 30px;
+        border: 1px solid mediumseagreen;
+        border-radius: 5px;
+        border-bottom: 2px solid mediumseagreen;
+        border-right: 2px solid mediumseagreen;
+    }
+    h2{
+        font-family: monospace;
+        /* text-align: center; */
+        margin-top: 35px;
+    }
+    #button{
+        width: 88%;
+        height: 40px;
+        font-size: 18px;
+        font-family: monospace;
+        font-weight: bold;
+        margin: 20px auto;
+        margin-top: 30px;
+        background-color: aquamarine;
+    }
+    #button:hover{
+        background-color: rgb(46, 211, 156);
+        
+    }
+    #result{
+        /* margin: 150px auto; */
+        width: 400px;
+        height: 600px;
+        margin-top: 130px;
+        margin-left: 20px;
+        padding-left: 20px;
+        text-align: left;
+        background-color: antiquewhite;
+        border: 1px solid rgb(69, 214, 166);
+        border-radius: 5px; 
+        display: none;
+    }
+</style>
+<body>
+    <div id="main">
+        <h1 id="title">Loan Calculator</h1>
+        <div id="input">
+            <p>Loan Amount </p>
+            <input type="number" id="amount" required >
+            
+            <p>Interest Rate </p>
+            <input type="number" id="interest_rate" required >
+            <p>Loan Tenure </p>
+            <input type="number" id="tenure"  required>
+
+            <input id="button" type="button" onclick="Calculate()" value="Submit">
+            
+        </div>
+    </div>
+    <div id="result">
+
+        <h2 id="principal"></h2>
+        <h2 id="rate"></h2>
+        <h2 id="time"></h2>
+        <h2 id="monthlyPay"></h2>
+        <h2 id="totalCost"></h2>
+        <h2 id="totalInterest"></h2>
+
+    </div>
+</body>
+</html>
+<script>
+
+
+    function Calculate(){
+        const principal = document.getElementById("amount").value;
+        const rate = document.getElementById("interest_rate").value;
+        const time = document.getElementById("tenure").value;
+        var monthly = 0,
+            pmt = 0,
+            total = 0,
+            totalInterest = 0,
+            monthlyInterest = 0;
+        monthlyInterest = ((parseFloat(principal) * (parseFloat(rate) / 100)) / 12).toFixed(2);
+        pmt = (parseFloat(monthlyInterest) / (1 - Math.pow(1 + ((parseFloat(rate) / 100) / 12), -12 * parseFloat(time)))).toFixed(2);
+        total = (parseFloat(pmt) * Math.floor(parseFloat(time) * 12)).toFixed(2);
+        totalInterest = (parseFloat(total) - parseFloat(principal)).toFixed(2);
+
+        document.getElementById("result").style.display = "block";
+
+        document.getElementById("principal").innerHTML = `Principal Amount = ${principal}`
+        document.getElementById("rate").innerHTML = `Annual Rate = ${rate}`
+        document.getElementById("time").innerHTML = `Loan Term = ${time}`
+        document.getElementById("monthlyPay").innerHTML = `Monthly Payable = ${pmt}`
+        document.getElementById("totalCost").innerHTML = ` Total Cost = ${total}`
+        document.getElementById("totalInterest").innerHTML = `Total Interest = ${totalInterest}`
+    }
+
+    var element = document.getElementById("tenure");
+    element.addEventListener("keypress", function(event){
+        if(event.key === "Enter"){
+          event.preventDefault();
+          Calculate();
+        }
+    })
+</script>

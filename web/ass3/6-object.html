@@ -1,0 +1,13 @@
+<script>
+    function vehicle(){
+        this.name = "Taaarzaaannnn...."
+    }
+    function car(){
+        vehicle.call(this);
+    }
+    car.prototype = Object.create(vehicle.prototype);
+    const mycar = new car();
+    // const mycar = Object.create(new vehicle());
+
+    alert(`mera car ${mycar.name}`);
+</script>

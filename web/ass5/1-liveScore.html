@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Score</title>
+</head>
+<style>
+    body{
+        background-color: antiquewhite;
+        font-family: monospace;
+        font-size: 20px;
+        text-shadow: 3px 3px 2px red;
+    }
+    #score-frame{
+        width: 60%;
+        margin: 10px auto;
+        padding: 3px;
+        border: 2px solid burlywood;
+        border-radius: 5px;
+    }
+    #title{
+        text-align: center;
+    }
+</style>
+<body>
+    <h1 id="title">Cricket Live Score Update</h1>
+    <div id="score-frame">
+        <a rel="nofollow" href="https://www.crictimes.org/cricket-scores">Live Cricket Scores</a>
+    </div>
+    <script
+        type="text/javascript">var html = document.getElementById('score-frame'); 
+        html.innerHTML = '<iframe src="https://cwidget.crictimes.org/?v=1.1&a=434343" style="width:100%;min-height: 460px;" frameborder="0" scrolling="yes"></iframe>';
+    </script>
+</body>
+
+</html>
+<script>
+    var seconds = 5;
+    setInterval(function runner() {
+        // run your ajax call here
+        var result = callAjax();
+    }, seconds * 1000); 
+
+    $(document).ready(function(){
+    $.ajax({
+    type: 'GET',
+    url: 'http://localhost:3000/matchData',
+    dataType: 'json'
+    })
+        .done(function(data) {
+            $('.team1').text(data.title);
+            $('.team1odds').text(data.values.t1odds);
+            $('.team1probability').text(data.values.t1probability);
+            $('.team1score').text(data.values.t1predict);
+            $('.team2').text(data.title);
+            $('.team2odds').text(data.values.t2odds);
+            $('.team2probability').text(data.values.t2probability);
+            $('.team2score').text(data.values.t2predict);
+        })
+        .fail(function() {
+            alert("Ajax failed to fetch data")
+        });
+});
+
+    // This is my nodejs route for handling ajax request, it returns json of match data
+
+    router.get('/matchData',function(req,res){
+        Match.getMatchData(function(err,match){
+            if(err) throw err;
+            res.send(match);
+        });
+    });
+
+</script>
+

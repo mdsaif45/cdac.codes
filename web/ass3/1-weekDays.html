@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      color: rgb(21, 70, 53);
+      background-color: aquamarine;
+      font-family: Georgia, "Times New Roman", Times, serif;
+    }
+    #main {
+      /* margin: 150px auto; */
+      margin-top: 130px;
+      width: 400px;
+      height: 600px;
+      background-color: antiquewhite;
+      border: 1px solid rgb(69, 214, 166);
+      border-radius: 5px;
+    }
+    #title {
+      text-align: center;
+      padding: 15px;
+    }
+    #input {
+      width: 200px;
+      margin: 10px auto;
+      font-size: 20px;
+      font-family: monospace;
+    }
+    input {
+      height: 30px;
+      border: 1px solid mediumseagreen;
+      border-radius: 5px;
+      border-bottom: 2px solid mediumseagreen;
+      border-right: 2px solid mediumseagreen;
+    }
+    h2 {
+      font-family: monospace;
+      /* text-align: center; */
+      margin-top: 35px;
+    }
+    #button {
+      width: 88%;
+      height: 40px;
+      font-size: 18px;
+      font-family: monospace;
+      font-weight: bold;
+      margin: 20px auto;
+      margin-top: 30px;
+      background-color: aquamarine;
+    }
+    #button:hover{
+        background-color: rgb(46, 211, 156);
+        
+    }
+    #result {
+      /* margin: 150px auto; */
+      width: 400px;
+      height: 600px;
+      margin-top: 130px;
+      margin-left: 20px;
+      padding-left: 20px;
+      text-align: left;
+      background-color: antiquewhite;
+      border: 1px solid rgb(69, 214, 166);
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+  <body>
+    <div id="main">
+      <h1 id="title">Week of Day</h1>
+      <div id="input">
+        <input type="number" id="val"/>
+        <input id="button" type="button" value="Submit">
+        <p id="output"></p>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+    const button = document.getElementById("button");
+
+    button.addEventListener("click", ()=>{
+        const val = Number(document.getElementById("val").value);
+        const result = document.getElementById("output");
+
+        switch (val) {
+            case 0:  
+            case 7:  result.innerHTML = "Sunday";
+                break;
+            case 1:  result.innerHTML = "Monday";
+                break;
+            case 2:  result.innerHTML = "Tuesday";
+                break;
+            case 3:  result.innerHTML = "Wednesday";
+                break;
+            case 4:  result.innerHTML = "Thusday";
+                break;
+            case 5:  result.innerHTML = "Friday";
+                break;
+            case 6:  result.innerHTML = "Saturday";
+                break;
+            default:    result.innerHTML = "Error selection...";
+                break;
+        }
+    })
+</script>
